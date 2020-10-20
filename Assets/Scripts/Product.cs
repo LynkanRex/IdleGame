@@ -19,7 +19,11 @@ public class Product : MonoBehaviour
     private int ProductOwnedAmount
     {
         get => _productOwnedAmount;
-        set => _productOwnedAmount = value;
+        set
+        {
+            _productOwnedAmount = value;
+            UpdateProductTextLabel();
+        }
     }
     
     private Component _productComponent;
@@ -62,7 +66,12 @@ public class Product : MonoBehaviour
             productButtonText.color = Color.black;
         }
     }
-    
+
+    void UpdateProductTextLabel()
+    {
+        productNameText.text = productName + ": " + _productOwnedAmount;
+    }
+
     public void BuyProduct()
     {
         var gold = GetComponentInParent<Gold>();
