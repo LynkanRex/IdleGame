@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -11,14 +12,13 @@ public class SaveLoad
     {
         _gold = gold;
     }
-    
-    
 
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
 
         save.savedGoldAmount = _gold.GoldAmount;
+        //save.savedProductsOwned = _product.productsOwnedAmount;
         //save.savedGoldPressesOwned = goldPressesOwned;
 
         return save;
@@ -50,8 +50,10 @@ public class SaveLoad
 
             _gold.goldText.text = "Gold: " + save.savedGoldAmount;
             _gold.GoldAmount = save.savedGoldAmount;
-
-            _gold.goldPressText.text = "Presses: " + save.savedGoldPressesOwned;
+            
+            //_product.productNameText.text = "Presses: " + save.savedProductsOwned;
+            //_product.productsOwnedAmount = save.savedProductsOwned;
+            //_gold.goldPressText.text = "Presses: " + save.savedGoldPressesOwned;
             //goldPressesOwned = save.savedGoldPressesOwned;
             
             Debug.Log($"Game loaded");

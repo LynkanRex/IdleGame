@@ -15,14 +15,14 @@ public class Product : MonoBehaviour
     [SerializeField] public Text productNameText = null;
     [SerializeField] private Text productButtonText = null;
     
-    private int _productOwnedAmount = 0;
+    public int productOwnedAmount = 0;
 
     private int ProductOwnedAmount
     {
-        get => _productOwnedAmount;
+        get => productOwnedAmount;
         set
         {
-            _productOwnedAmount = value;
+            productOwnedAmount = value;
             UpdateProductTextLabel();
         }
     }
@@ -41,10 +41,12 @@ public class Product : MonoBehaviour
     }
     
     
+    
+    
     // Start is called before the first frame update
     void Start()
     {
-        productNameText.text = productName + ": " + _productOwnedAmount;
+        productNameText.text = productName + ": " + productOwnedAmount;
         StartCoroutine(nameof(ProductGenerateGold));
         ProductComponent = GetComponentInParent<Gold>();
     }
@@ -70,7 +72,7 @@ public class Product : MonoBehaviour
 
     void UpdateProductTextLabel()
     {
-        productNameText.text = productName + ": " + _productOwnedAmount;
+        productNameText.text = productName + ": " + productOwnedAmount;
     }
 
     public void BuyProduct()
@@ -94,7 +96,7 @@ public class Product : MonoBehaviour
             yield return new WaitForSeconds(productProductionTime);
             
             var gold = GetComponentInParent<Gold>();
-            int generatedGold = _productOwnedAmount * productProductionAmount;
+            int generatedGold = productOwnedAmount * productProductionAmount;
             gold.GoldAmount += generatedGold;
         }
     }
