@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Product : MonoBehaviour
 {
-    [SerializeField] string productName;
+    [SerializeField] string productName = "";
     [SerializeField] int productCost = 100;
     [SerializeField] int productProductionTime = 1;
     [SerializeField] int productProductionAmount = 1;
