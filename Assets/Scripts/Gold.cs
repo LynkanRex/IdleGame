@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GenerateGold : MonoBehaviour
+public class Gold : MonoBehaviour
 {
     public int goldAmount;
     public Text goldText;
@@ -18,5 +18,10 @@ public class GenerateGold : MonoBehaviour
     void Update()
     {
         goldText.text = "Gold: " + goldAmount;
+    }
+
+    void GenerateGold()
+    {
+        
     }
 }
