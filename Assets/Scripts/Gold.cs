@@ -15,6 +15,10 @@ public class Gold : MonoBehaviour
     public Text goldPressText;
     
     [SerializeField] int goldGainAmount = 5;
+    [SerializeField] int goldPressCost = 100;
+    [SerializeField] int goldPressGoldAmount = 1;
+    [SerializeField] int goldPressProductionTime = 1;
+    
     
     
     
@@ -52,9 +56,9 @@ public class Gold : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(goldPressProductionTime);
             
-            int generatedGold = goldPressesOwned * 1;
+            int generatedGold = goldPressesOwned * goldPressGoldAmount;
             goldAmount += generatedGold;
 
             Debug.Log($"Generated {generatedGold} gold via presses.");
@@ -64,9 +68,9 @@ public class Gold : MonoBehaviour
     public void BuyGoldPress()
     {
 
-        if (goldAmount > 100)
+        if (goldAmount > goldPressCost)
         {
-            goldAmount -= 100;
+            goldAmount -= goldPressCost;
             goldPressesOwned += 1;
         }
         else
