@@ -21,6 +21,12 @@ public class Gold : MonoBehaviour
         goldAmount = 0;
         LoadGame();
     }
+    
+    // Autosaves our progress when the Game is closed
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,14 +34,21 @@ public class Gold : MonoBehaviour
         goldText.text = "Gold: " + goldAmount;
     }
 
-    public void GenerateGold()
+    private void GenerateGold()
     {
         goldAmount += goldGainAmount;
     }
-
-    private void OnApplicationQuit()
+    
+    
+    
+    private Save CreateSaveGameObject()
     {
-        SaveGame();
+        Save save = new Save();
+        int i = 0;
+
+        save.savedGoldAmount = goldAmount;
+
+        return save;
     }
 
     private void SaveGame()
@@ -65,25 +78,12 @@ public class Gold : MonoBehaviour
             goldText.text = "Gold: " + save.savedGoldAmount;
             goldAmount = save.savedGoldAmount;
             
-            Debug.Log(Application.persistentDataPath);
-            Debug.Log($"Game loaded with {save.savedGoldAmount} gold!");
+            Debug.Log($"Game loaded");
             
         }
         else
         {
-            Debug.Log(Application.persistentDataPath);
             Debug.Log("No Savegame found, first time playing?");
         }
-        
-    }
-    
-    private Save CreateSaveGameObject()
-    {
-        Save save = new Save();
-        int i = 0;
-
-        save.savedGoldAmount = goldAmount;
-
-        return save;
     }
 }
