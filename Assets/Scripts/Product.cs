@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +6,13 @@ using UnityEngine.UI;
 public class Product : MonoBehaviour
 {
     private int[] purchaseableProducts;
-    
-    [SerializeField] string productName = "";
+
+    [SerializeField] public string productName = "";
     [SerializeField] int productCost = 100;
     [SerializeField] int productProductionTime = 1;
     [SerializeField] int productProductionAmount = 1;
 
-    [SerializeField] private Text productNameText = null;
+    [SerializeField] public Text productNameText = null;
     [SerializeField] private Text productButtonText = null;
     
     private int _productOwnedAmount = 0;

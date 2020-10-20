@@ -1,17 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class SaveLoad : MonoBehaviour
+public class SaveLoad
 {
     private Gold _gold;
+    private Product _product;
 
     public SaveLoad(Gold gold)
     {
         _gold = gold;
     }
+    
+    
 
     private Save CreateSaveGameObject()
     {

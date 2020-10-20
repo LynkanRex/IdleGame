@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a371bed076ff8440aa223f9114fe9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productName: Presses
+  productName: Prasses
   productCost: 100
   productProductionTime: 1
   productProductionAmount: 1
