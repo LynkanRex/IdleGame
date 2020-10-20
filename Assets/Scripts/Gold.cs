@@ -20,8 +20,8 @@ public class Gold : MonoBehaviour
         goldText.text = "Gold: " + goldAmount;
     }
 
-    void GenerateGold()
+    public void GenerateGold()
     {
-        
+        goldAmount += 5;
     }
 }
