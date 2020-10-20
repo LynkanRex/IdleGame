@@ -474,6 +474,7 @@ GameObject:
   - component: {fileID: 1153984272}
   - component: {fileID: 1153984276}
   - component: {fileID: 1153984277}
+  - component: {fileID: 1153984279}
   - component: {fileID: 1153984278}
   m_Layer: 5
   m_Name: GameCanvas
@@ -575,15 +576,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32df2eae30a6d0042a35490788ba785a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 0
   goldText: {fileID: 1479469591}
-  goldPressesOwned: 0
   goldPressText: {fileID: 25099809}
   goldPressButtonText: {fileID: 255117956}
-  goldGainAmount: 5
-  goldPressCost: 100
-  goldPressGoldAmount: 1
-  goldPressProductionTime: 1
 --- !u!114 &1153984277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,11 +598,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153984271}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a371bed076ff8440aa223f9114fe9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  productName: Presses
+  productCost: 100
+  productProductionTime: 1
+  productProductionAmount: 1
+  productNameText: {fileID: 25099809}
+  productButtonText: {fileID: 255117956}
+--- !u!114 &1153984279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153984271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c43e086a6ec39489cfe1446e81b569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldGainAmountPerClick: 5
 --- !u!1 &1479469589
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,9 +784,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1153984276}
-        m_TargetAssemblyTypeName: Gold, Assembly-CSharp
-        m_MethodName: BuyGoldPress
+      - m_Target: {fileID: 1153984278}
+        m_TargetAssemblyTypeName: Product, Assembly-CSharp
+        m_MethodName: BuyProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -17,20 +17,19 @@ public class Gold : MonoBehaviour
         set
         {
             _goldAmount = value;
-            goldText.text = "Gold: " + value;
+            UpdateGoldTextLabel();
         }
     }
     
     
-    public int goldPressesOwned = 0;
+    //public int goldPressesOwned = 0;
     public Text goldPressText;
 
     public Text goldPressButtonText;
     
-    [SerializeField] int goldGainAmount = 5;
-    [SerializeField] int goldPressCost = 100;
-    [SerializeField] int goldPressGoldAmount = 1;
-    [SerializeField] int goldPressProductionTime = 1;
+    //[SerializeField] int goldPressCost = 100;
+    //[SerializeField] int goldPressGoldAmount = 1;
+    //[SerializeField] int goldPressProductionTime = 1;
     
     
     
@@ -38,10 +37,10 @@ public class Gold : MonoBehaviour
     void Start()
     {
         GoldAmount = 0;
-        goldPressesOwned = 0;
+        //goldPressesOwned = 0;
         LoadGame();
         
-        StartCoroutine("PressGenerateGold");
+        //StartCoroutine("PressGenerateGold");
     }
     
     // Autosaves our progress when the Game is closed
@@ -53,53 +52,53 @@ public class Gold : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdatePressesOwnedLabel();
+        // if (GoldAmount < goldPressCost)
+        // {
+        //     goldPressButtonText.color = Color.red;
+        // }
+        // else
+        // {
+        //     goldPressButtonText.color = Color.black;
+        // }
+    }
+
+    private void UpdatePressesOwnedLabel()
+    {
+        //goldPressText.text = "Presses: " + goldPressesOwned;
+    }
+
+    private void UpdateGoldTextLabel()
+    {
         goldText.text = "Gold: " + GoldAmount;
-        goldPressText.text = "Presses: " + goldPressesOwned;
-
-        if (GoldAmount < goldPressCost)
-        {
-            goldPressButtonText.color = Color.red;
-        }
-        else
-        {
-            goldPressButtonText.color = Color.black;
-        }
     }
 
-    private void GenerateGold()
-    {
-        GoldAmount += goldGainAmount;
-    }
 
-    IEnumerator PressGenerateGold()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(goldPressProductionTime);
-            
-            int generatedGold = goldPressesOwned * goldPressGoldAmount;
-            GoldAmount += generatedGold;
 
-            //Debug.Log($"Generated {generatedGold} gold via presses.");
-        }
-    }
+    // IEnumerator PressGenerateGold()
+    // {
+    //     while (true)
+    //     {
+    //         yield return new WaitForSeconds(goldPressProductionTime);
+    //         
+    //         int generatedGold = goldPressesOwned * goldPressGoldAmount;
+    //         GoldAmount += generatedGold;
+    //     }
+    // }
     
-    public void BuyGoldPress()
-    {
-
-        if (GoldAmount > goldPressCost)
-        {
-            GoldAmount -= goldPressCost;
-            goldPressesOwned += 1;
-        }
-        else
-        {
-            Debug.Log("Not enough gold!");
-        }
-    }
-    
-    
-    
+    // public void BuyGoldPress()
+    // {
+    //
+    //     if (GoldAmount > goldPressCost)
+    //     {
+    //         GoldAmount -= goldPressCost;
+    //         goldPressesOwned += 1;
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("Not enough gold!");
+    //     }
+    // }
     
     
     
@@ -108,7 +107,7 @@ public class Gold : MonoBehaviour
         Save save = new Save();
 
         save.savedGoldAmount = GoldAmount;
-        save.savedGoldPressesOwned = goldPressesOwned;
+        //save.savedGoldPressesOwned = goldPressesOwned;
 
         return save;
     }
@@ -141,7 +140,7 @@ public class Gold : MonoBehaviour
             GoldAmount = save.savedGoldAmount;
 
             goldPressText.text = "Presses: " + save.savedGoldPressesOwned;
-            goldPressesOwned = save.savedGoldPressesOwned;
+            //goldPressesOwned = save.savedGoldPressesOwned;
             
             Debug.Log($"Game loaded");
             
