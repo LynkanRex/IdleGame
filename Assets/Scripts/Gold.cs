@@ -21,7 +21,7 @@ public class Gold : MonoBehaviour
             UpdateGoldTextLabel();
         }
     }
-    
+
     public Text goldPressText;
 
     public Text goldPressButtonText;
@@ -32,33 +32,21 @@ public class Gold : MonoBehaviour
         _saveLoad = new SaveLoad(this);
     }
 
+    private void UpdateGoldTextLabel()
+    {
+        goldText.text = "Gold: " + GoldAmount;
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
         GoldAmount = 0;
         _saveLoad.LoadGame();
-
     }
     
     // Autosaves our progress when the Game is closed
     private void OnApplicationQuit()
     {
         _saveLoad.SaveGame();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        UpdatePressesOwnedLabel();
-    }
-
-    private void UpdatePressesOwnedLabel()
-    {
-        //goldPressText.text = "Presses: " + goldPressesOwned;
-    }
-
-    private void UpdateGoldTextLabel()
-    {
-        goldText.text = "Gold: " + GoldAmount;
     }
 }
