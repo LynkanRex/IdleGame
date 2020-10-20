@@ -8,9 +8,23 @@ using UnityEngine.UI;
 
 public class Gold : MonoBehaviour
 {
-    public int goldAmount;
+    int _goldAmount;
     public Text goldText;
 
+    public int GoldAmount
+    {
+        get
+        {
+            return _goldAmount;
+        }
+        set
+        {
+            _goldAmount = value;
+            goldText.text = "Gold: " + value;
+        }
+    }
+    
+    
     public int goldPressesOwned = 0;
     public Text goldPressText;
 
@@ -26,7 +40,7 @@ public class Gold : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        goldAmount = 0;
+        GoldAmount = 0;
         goldPressesOwned = 0;
         LoadGame();
         
@@ -42,10 +56,10 @@ public class Gold : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        goldText.text = "Gold: " + goldAmount;
+        goldText.text = "Gold: " + GoldAmount;
         goldPressText.text = "Presses: " + goldPressesOwned;
 
-        if (goldAmount < goldPressCost)
+        if (GoldAmount < goldPressCost)
         {
             goldPressButtonText.color = Color.red;
         }
@@ -57,7 +71,7 @@ public class Gold : MonoBehaviour
 
     private void GenerateGold()
     {
-        goldAmount += goldGainAmount;
+        GoldAmount += goldGainAmount;
     }
 
     IEnumerator PressGenerateGold()
@@ -67,7 +81,7 @@ public class Gold : MonoBehaviour
             yield return new WaitForSeconds(goldPressProductionTime);
             
             int generatedGold = goldPressesOwned * goldPressGoldAmount;
-            goldAmount += generatedGold;
+            GoldAmount += generatedGold;
 
             //Debug.Log($"Generated {generatedGold} gold via presses.");
         }
@@ -76,9 +90,9 @@ public class Gold : MonoBehaviour
     public void BuyGoldPress()
     {
 
-        if (goldAmount > goldPressCost)
+        if (GoldAmount > goldPressCost)
         {
-            goldAmount -= goldPressCost;
+            GoldAmount -= goldPressCost;
             goldPressesOwned += 1;
         }
         else
@@ -95,9 +109,8 @@ public class Gold : MonoBehaviour
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
-        int i = 0;
 
-        save.savedGoldAmount = goldAmount;
+        save.savedGoldAmount = GoldAmount;
         save.savedGoldPressesOwned = goldPressesOwned;
 
         return save;
@@ -113,7 +126,7 @@ public class Gold : MonoBehaviour
         bf.Serialize(file, save);
         file.Close();
 
-        Debug.Log($"Game was saved with {goldAmount}");
+        Debug.Log($"Game was saved with {GoldAmount} gold");
     }
     
     private void LoadGame()
@@ -128,7 +141,7 @@ public class Gold : MonoBehaviour
             
             
             goldText.text = "Gold: " + save.savedGoldAmount;
-            goldAmount = save.savedGoldAmount;
+            GoldAmount = save.savedGoldAmount;
 
             goldPressText.text = "Presses: " + save.savedGoldPressesOwned;
             goldPressesOwned = save.savedGoldPressesOwned;
