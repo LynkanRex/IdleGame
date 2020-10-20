@@ -13,12 +13,13 @@ public class Gold : MonoBehaviour
 
     public int goldPressesOwned = 0;
     public Text goldPressText;
+
+    public Text goldPressButtonText;
     
     [SerializeField] int goldGainAmount = 5;
     [SerializeField] int goldPressCost = 100;
     [SerializeField] int goldPressGoldAmount = 1;
     [SerializeField] int goldPressProductionTime = 1;
-    
     
     
     
@@ -44,7 +45,14 @@ public class Gold : MonoBehaviour
         goldText.text = "Gold: " + goldAmount;
         goldPressText.text = "Presses: " + goldPressesOwned;
 
-        
+        if (goldAmount < goldPressCost)
+        {
+            goldPressButtonText.color = Color.red;
+        }
+        else
+        {
+            goldPressButtonText.color = Color.black;
+        }
     }
 
     private void GenerateGold()
