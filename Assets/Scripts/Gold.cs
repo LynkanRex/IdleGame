@@ -11,10 +11,14 @@ public class Gold : MonoBehaviour
     public int goldAmount;
     public Text goldText;
 
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         goldAmount = 0;
+        LoadGame();
     }
 
     // Update is called once per frame
@@ -30,15 +34,46 @@ public class Gold : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        SaveGame();
+    }
+
+    private void SaveGame()
+    {
         Save save = CreateSaveGameObject();
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        FileStream file = File.Create(Application.persistentDataPath + "/savegame.save");
 
         bf.Serialize(file, save);
         file.Close();
 
         Debug.Log("Game was saved");
+    }
+    
+    private void LoadGame()
+    {
+        if (File.Exists(Application.persistentDataPath + "/savegame.save"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/savegame.save",
+                FileMode.Open);
+            Save save = (Save) bf.Deserialize(file);
+            file.Close();
+            
+            
+            goldText.text = "Gold: " + save.savedGoldAmount;
+            goldAmount = save.savedGoldAmount;
+            
+            Debug.Log(Application.persistentDataPath);
+            Debug.Log($"Game loaded with {goldAmount} gold!");
+            
+        }
+        else
+        {
+            Debug.Log(Application.persistentDataPath);
+            Debug.Log("No Savegame found, first time playing?");
+        }
+        
     }
     
     private Save CreateSaveGameObject()
