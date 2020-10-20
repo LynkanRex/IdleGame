@@ -579,7 +579,11 @@ MonoBehaviour:
   goldText: {fileID: 1479469591}
   goldPressesOwned: 0
   goldPressText: {fileID: 25099809}
+  goldPressButtonText: {fileID: 255117956}
   goldGainAmount: 5
+  goldPressCost: 100
+  goldPressGoldAmount: 1
+  goldPressProductionTime: 1
 --- !u!114 &1153984277
 MonoBehaviour:
   m_ObjectHideFlags: 0

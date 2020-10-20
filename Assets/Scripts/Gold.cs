@@ -69,7 +69,7 @@ public class Gold : MonoBehaviour
             int generatedGold = goldPressesOwned * goldPressGoldAmount;
             goldAmount += generatedGold;
 
-            Debug.Log($"Generated {generatedGold} gold via presses.");
+            //Debug.Log($"Generated {generatedGold} gold via presses.");
         }
     }
     
