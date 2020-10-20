@@ -7,5 +7,5 @@ public class Save
 {
 
     public int savedGoldAmount = 0;
-
+    public int savedGoldPressesOwned = 0;
 }
