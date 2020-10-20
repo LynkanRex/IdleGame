@@ -16,7 +16,7 @@ public class ClickArea : MonoBehaviour
         Rect bounds = new Rect(0, 0, Screen.width / 2, Screen.height);
         if (Input.GetMouseButtonDown(0) && bounds.Contains(Input.mousePosition))
         {
-            Debug.Log("CLICKED!!");
+            SendMessage("GenerateGold");
         }
     }
 }
