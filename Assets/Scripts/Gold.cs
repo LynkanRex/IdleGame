@@ -11,6 +11,7 @@ public class Gold : MonoBehaviour
     public int goldAmount;
     public Text goldText;
 
+    [SerializeField] int goldGainAmount = 5;
     
     
     
@@ -29,7 +30,7 @@ public class Gold : MonoBehaviour
 
     public void GenerateGold()
     {
-        goldAmount += 5;
+        goldAmount += goldGainAmount;
     }
 
     private void OnApplicationQuit()
@@ -47,7 +48,7 @@ public class Gold : MonoBehaviour
         bf.Serialize(file, save);
         file.Close();
 
-        Debug.Log("Game was saved");
+        Debug.Log($"Game was saved with {goldAmount}");
     }
     
     private void LoadGame()
@@ -65,7 +66,7 @@ public class Gold : MonoBehaviour
             goldAmount = save.savedGoldAmount;
             
             Debug.Log(Application.persistentDataPath);
-            Debug.Log($"Game loaded with {goldAmount} gold!");
+            Debug.Log($"Game loaded with {save.savedGoldAmount} gold!");
             
         }
         else
