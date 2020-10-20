@@ -26,29 +26,14 @@ public class Product : MonoBehaviour
             UpdateProductTextLabel();
         }
     }
-    
-    private Component _productComponent;
-    public Component ProductComponent
-    {
-        get
-        {
-            return _productComponent;
-        }
-        private set
-        {
-            _productComponent = value;
-        }
-    }
-    
-    
-    
-    
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         productNameText.text = productName + ": " + productOwnedAmount;
         StartCoroutine(nameof(ProductGenerateGold));
-        ProductComponent = GetComponentInParent<Gold>();
     }
     
     // Update is called once per frame
