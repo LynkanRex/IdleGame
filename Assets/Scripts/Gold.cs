@@ -13,10 +13,7 @@ public class Gold : MonoBehaviour
 
     public int GoldAmount
     {
-        get
-        {
-            return _goldAmount;
-        }
+        get => _goldAmount;
         set
         {
             _goldAmount = value;
