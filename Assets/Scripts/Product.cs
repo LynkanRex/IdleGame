@@ -12,6 +12,7 @@ public class Product : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         GenerateProductButtons();
 
         
@@ -30,6 +31,38 @@ public class Product : MonoBehaviour
         //     var myView = myGameObject.GetComponent<ConfigurableProductView>();
         //     myView.productButtonText.text = purchasableProduct[i].productName;
         // }
+=======
+        get => productOwnedAmount;
+        set
+        {
+            productOwnedAmount = value;
+            UpdateProductTextLabel();
+        }
+    }
+    
+    private Component _productComponent;
+    public Component ProductComponent
+    {
+        get
+        {
+            return _productComponent;
+        }
+        private set
+        {
+            _productComponent = value;
+        }
+    }
+    
+    
+    
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        productNameText.text = productName + ": " + productOwnedAmount;
+        StartCoroutine(nameof(ProductGenerateGold));
+        ProductComponent = GetComponentInParent<Gold>();
+>>>>>>> parent of c696ade... Update Product.cs
     }
     
     // Update is called once per frame
