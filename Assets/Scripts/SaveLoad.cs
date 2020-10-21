@@ -50,7 +50,7 @@ public class SaveLoad
             Save save = (Save) bf.Deserialize(file);
             file.Close();
 
-            _hud = GameObject.Find("GameCanvas");
+            
             //_hud.goldText.text = "Gold: " + save.savedGoldAmount;
             _gold.GoldAmount = save.savedGoldAmount;
             

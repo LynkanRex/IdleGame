@@ -19,13 +19,22 @@ public class GoldPress : MonoBehaviour {
         }
     }
 
+    private int totalCost
+    {
+        get
+        {
+            return ((costs * GoldPressAmount) / 10) + costs;
+        }   
+    }
+
     void UpdateGoldPressAmountLabel() {
         this.goldPressAmountText.text = this.GoldPressAmount.ToString("0 Presses");
     }
 
     void UpdateGoldPressButtonLabel()
     {
-        this.BuyPressButtonText.text = this.costs.ToString("Buy Press: 0 Gold");
+        int totals = (costs * GoldPressAmount) / 10 + costs; 
+        this.BuyPressButtonText.text = totals.ToString("Buy Press: 0 Gold");
     }
 
     void Start() {
@@ -39,6 +48,17 @@ public class GoldPress : MonoBehaviour {
             ProduceGold();
             this.elapsedTime -= this.productionTime; // DO NOT SET TO ZERO HERE
         }
+        
+        var gold = FindObjectOfType<Gold>();
+        if (gold.GoldAmount < totalCost)
+        {
+            this.BuyPressButtonText.color = Color.red;
+        }
+        else
+        {
+            this.BuyPressButtonText.color = Color.black;
+        }
+        
     }
     // something costs 100ct, and I get 40ct per day:
     // IN CASE WE SET IT TO ZERO:
@@ -53,8 +73,10 @@ public class GoldPress : MonoBehaviour {
 
     public void BuyGoldPress() {
         var gold = FindObjectOfType<Gold>();
-        if (gold.GoldAmount >= this.costs) {
-            gold.GoldAmount -= this.costs;
+
+        int costIncrease = (costs * GoldPressAmount) / 10;
+        if (gold.GoldAmount >= totalCost) {
+            gold.GoldAmount -= this.totalCost;
             this.GoldPressAmount += 1;
         }
 
