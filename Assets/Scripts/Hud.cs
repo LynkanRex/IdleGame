@@ -1,18 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hud : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Text goldText;
+    private Gold _gold;
+
+    private void Start()
     {
-        
+        _gold = GetComponentInParent<Gold>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateGoldTextLabel()
     {
-        
+        goldText.text = "Gold: " + _gold.GoldAmount;
     }
 }

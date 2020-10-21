@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveLoad
 {
     private Gold _gold;
+    private GameObject _hud;
     private Product _product;
     
     // TODO: Save Array of products owned in stead
@@ -49,8 +50,8 @@ public class SaveLoad
             Save save = (Save) bf.Deserialize(file);
             file.Close();
 
-
-            _gold.goldText.text = "Gold: " + save.savedGoldAmount;
+            _hud = GameObject.Find("GameCanvas");
+            //_hud.goldText.text = "Gold: " + save.savedGoldAmount;
             _gold.GoldAmount = save.savedGoldAmount;
             
             //_product.productNameText.text = "Presses: " + save.savedProductsOwned;

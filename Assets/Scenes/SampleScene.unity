@@ -544,6 +544,7 @@ MonoBehaviour:
   costs: 100
   productionTime: 1
   goldPressAmountText: {fileID: 4835645658933936058}
+  BuyPressButtonText: {fileID: 1292219741}
 --- !u!1 &1292219739
 GameObject:
   m_ObjectHideFlags: 0

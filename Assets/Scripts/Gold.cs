@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Gold : MonoBehaviour
 {
     int _goldAmount;
-    public Text goldText;
+    private Hud _hud;
 
     public int GoldAmount
     {
@@ -13,12 +13,10 @@ public class Gold : MonoBehaviour
         set
         {
             _goldAmount = value;
-            UpdateGoldTextLabel();
+            _hud.UpdateGoldTextLabel();
         }
     }
 
-    public Text goldPressText;
-    
     private readonly SaveLoad _saveLoad;
 
     public Gold()
@@ -26,16 +24,17 @@ public class Gold : MonoBehaviour
         _saveLoad = new SaveLoad(this);
     }
 
-    private void UpdateGoldTextLabel()
+    void Awake()
     {
-        goldText.text = "Gold: " + GoldAmount;
+        _hud = GetComponent<Hud>();
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
         GoldAmount = 0;
         _saveLoad.LoadGame();
+        
     }
     
      //Autosaves our progress when the Game is closed

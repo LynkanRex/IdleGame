@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1859706034316154625}
   - component: {fileID: 1859706034316154629}
   - component: {fileID: 1859706034316154628}
+  - component: {fileID: 5393121161905147128}
   - component: {fileID: 1859706034316154630}
   m_Layer: 5
   m_Name: GameCanvas
@@ -209,6 +210,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae7f6fa33953fd4da308de198c069dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5393121161905147128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859706034316154654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ef5e1a77d232c4599a3ce0b57b7d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldText: {fileID: 0}
 --- !u!114 &1859706034316154630
 MonoBehaviour:
   m_ObjectHideFlags: 0
