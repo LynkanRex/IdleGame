@@ -4,6 +4,7 @@ using UnityEngine;
 public class ClickArea : MonoBehaviour
 {
 
+    public GoldPopup _goldPopup;
     private Rect bounds;
 
     // Start is called before the first frame update
@@ -23,7 +24,9 @@ public class ClickArea : MonoBehaviour
 
     private void AreaClicked()
     {
+        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var gold = GetComponentInParent<GenerateGold>();
         gold.CreateGold();
+        _goldPopup.Create(pos, 200);
     }
 }
