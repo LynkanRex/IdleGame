@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldGainPopup: {fileID: 1675766335572633480}
+  lifeTime: 1
 --- !u!114 &1675766335572633590
 MonoBehaviour:
   m_ObjectHideFlags: 0
