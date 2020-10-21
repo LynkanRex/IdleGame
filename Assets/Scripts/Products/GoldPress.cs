@@ -36,7 +36,7 @@ public class GoldPress : MonoBehaviour {
     void UpdateGoldPressButtonLabel()
     {
         int totals = (costs * GoldPressAmount) / 10 + costs; 
-        this.BuyPressButtonText.text = totals.ToString("Buy Press: 0 Gold");
+        this.BuyPressButtonText.text = totalCost.ToString("Buy Press: 0 Gold");
     }
 
     void Start() {
@@ -69,8 +69,7 @@ public class GoldPress : MonoBehaviour {
     }
 
     public void BuyGoldPress() {
-
-        int costIncrease = (costs * GoldPressAmount) / 10;
+        
         if (_gold.GoldAmount >= totalCost) {
             _gold.GoldAmount -= this.totalCost;
             this.GoldPressAmount += 1;

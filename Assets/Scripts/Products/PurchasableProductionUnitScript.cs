@@ -18,6 +18,14 @@ public class PurchasableProductionUnitScript : MonoBehaviour
     }
     
     
+    private int totalCost
+    {
+        get
+        {
+            return ((this.purchasableProduct.productCost * this.ProductAmount) / 10) + this.purchasableProduct.productCost;
+        }   
+    }
+    
     public int ProductAmount {
         get => PlayerPrefs.GetInt(this.purchasableProduct.productName, 0);
         set {
@@ -31,8 +39,14 @@ public class PurchasableProductionUnitScript : MonoBehaviour
         this.goldAmountText.text = this.ProductAmount.ToString($"0 {this.purchasableProduct.productName}");
     }
     
+    void UpdateGoldPressButtonLabel()
+    {
+        this.purchaseButtonLabel.text = totalCost.ToString($"Buy {this.purchasableProduct.productName}: 0 Gold");
+    }
+    
     void Start() {
         UpdateGoldPressAmountLabel();
+        UpdateGoldPressButtonLabel();
     }
 
     void Update() {
@@ -51,9 +65,11 @@ public class PurchasableProductionUnitScript : MonoBehaviour
 
     public void BuyGoldPress() {
         var gold = FindObjectOfType<Gold>();
-        if (gold.GoldAmount >= this.purchasableProduct.productCost) {
-            gold.GoldAmount -= this.purchasableProduct.productCost;
+        if (gold.GoldAmount >= this.totalCost) {
+            gold.GoldAmount -= this.totalCost;
             this.ProductAmount += 1;
+
+            UpdateGoldPressButtonLabel();
         }
     }
 }
