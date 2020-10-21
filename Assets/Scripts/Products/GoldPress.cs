@@ -5,9 +5,12 @@ public class GoldPress : MonoBehaviour {
     public int productionAmount = 1;
     public int costs = 100;
     public float productionTime = 1f;
-    public Text goldAmountText;
+    public Text goldPressAmountText;
     float elapsedTime;
 
+
+    public Text BuyPressButtonText;
+    
     public int GoldPressAmount {
         get => PlayerPrefs.GetInt("GoldPress", 0);
         set {
@@ -17,11 +20,17 @@ public class GoldPress : MonoBehaviour {
     }
 
     void UpdateGoldPressAmountLabel() {
-        this.goldAmountText.text = this.GoldPressAmount.ToString("0 GoldPresses");
+        this.goldPressAmountText.text = this.GoldPressAmount.ToString("0 Presses");
+    }
+
+    void UpdateGoldPressButtonLabel()
+    {
+        this.BuyPressButtonText.text = this.costs.ToString("Buy Press: 0 Gold");
     }
 
     void Start() {
         UpdateGoldPressAmountLabel();
+        UpdateGoldPressButtonLabel();
     }
 	
     void Update() {
@@ -48,5 +57,7 @@ public class GoldPress : MonoBehaviour {
             gold.GoldAmount -= this.costs;
             this.GoldPressAmount += 1;
         }
+
+        UpdateGoldPressButtonLabel();
     }
 }

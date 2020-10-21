@@ -38,9 +38,9 @@ public class Gold : MonoBehaviour
         _saveLoad.LoadGame();
     }
     
-    // Autosaves our progress when the Game is closed
-    private void OnApplicationQuit()
-    {
-        _saveLoad.SaveGame();
-    }
+     //Autosaves our progress when the Game is closed
+     private void OnApplicationQuit()
+     {
+         _saveLoad.SaveGame();
+     }
 }
