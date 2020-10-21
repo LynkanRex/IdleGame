@@ -549,6 +549,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1859706033995651590, guid: 3de49e0e6c700994ba270e7abdc9ece0, type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859706033995651590, guid: 3de49e0e6c700994ba270e7abdc9ece0, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1859706034316154626, guid: 3de49e0e6c700994ba270e7abdc9ece0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -17,8 +17,9 @@ public class PurchasableProductionUnitScript : MonoBehaviour
         this.purchaseButtonLabel.text = $"Purchase {purchasableProduct.productName}";
     }
     
+    private Gold _gold;
     
-    private int totalCost
+    private int TotalCost
     {
         get
         {
@@ -41,10 +42,11 @@ public class PurchasableProductionUnitScript : MonoBehaviour
     
     void UpdateGoldPressButtonLabel()
     {
-        this.purchaseButtonLabel.text = totalCost.ToString($"Buy {this.purchasableProduct.productName}: 0 Gold");
+        this.purchaseButtonLabel.text = TotalCost.ToString($"Buy {this.purchasableProduct.productName}: 0 Gold");
     }
     
     void Start() {
+        _gold = FindObjectOfType<Gold>();
         UpdateGoldPressAmountLabel();
         UpdateGoldPressButtonLabel();
     }
@@ -55,18 +57,29 @@ public class PurchasableProductionUnitScript : MonoBehaviour
             ProduceGold();
             this.elapsedTime -= this.purchasableProduct.productProductionTime; // DO NOT SET TO ZERO HERE
         }
+        
+
+        if (_gold.GoldAmount < TotalCost)
+        {
+            purchaseButtonLabel.color = Color.red;
+        }
+        else
+        {
+            purchaseButtonLabel.color = Color.black;
+        }
+        
     }
     
     
     void ProduceGold() {
-        var gold = FindObjectOfType<Gold>();
-        gold.GoldAmount += this.purchasableProduct.productProductionAmount * this.ProductAmount;
+        //var gold = FindObjectOfType<Gold>();
+        _gold.GoldAmount += this.purchasableProduct.productProductionAmount * this.ProductAmount;
     }
 
     public void BuyGoldPress() {
-        var gold = FindObjectOfType<Gold>();
-        if (gold.GoldAmount >= this.totalCost) {
-            gold.GoldAmount -= this.totalCost;
+        //var gold = FindObjectOfType<Gold>();
+        if (_gold.GoldAmount >= this.TotalCost) {
+            _gold.GoldAmount -= this.TotalCost;
             this.ProductAmount += 1;
 
             UpdateGoldPressButtonLabel();
