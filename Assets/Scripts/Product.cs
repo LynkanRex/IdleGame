@@ -5,7 +5,8 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Product : MonoBehaviour
 {
-    private int[] purchaseableProducts;
+
+    public PurchasableProduct[] purchasableProduct;
 
     [SerializeField] public string productName = "";
     [SerializeField] int productCost = 100;

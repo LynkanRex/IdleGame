@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 255117957}
   - component: {fileID: 255117956}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Gold Press Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -548,7 +548,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldText: {fileID: 1479469591}
   goldPressText: {fileID: 25099809}
-  goldPressButtonText: {fileID: 255117956}
 --- !u!114 &1153984277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,12 +572,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a371bed076ff8440aa223f9114fe9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  purchasableProduct:
+  - productName: Presses
+    productCost: 100
+    productProductionTime: 1
+    productProductionAmount: 1
+    productNameText: {fileID: 25099809}
+    productButtonText: {fileID: 255117956}
+  - productName: Loans
+    productCost: 500
+    productProductionTime: 1
+    productProductionAmount: 50
+    productNameText: {fileID: 0}
+    productButtonText: {fileID: 0}
   productName: Prasses
   productCost: 100
   productProductionTime: 1
   productProductionAmount: 1
   productNameText: {fileID: 25099809}
   productButtonText: {fileID: 255117956}
+  productOwnedAmount: 0
 --- !u!114 &1153984279
 MonoBehaviour:
   m_ObjectHideFlags: 0
