@@ -31,7 +31,7 @@ public class GoldPopup : MonoBehaviour
     
     public void Setup(int goldGainAmount)
     {
-        textMesh.SetText(goldGainAmount.ToString());
+        textMesh.SetText($"+ {goldGainAmount} Gold");
     }
 
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GenerateGold : MonoBehaviour
 {
-    [SerializeField] int goldGainAmountPerClick = 5;
+    [SerializeField] public int goldGainAmountPerClick = 5;
 
     public void CreateGold()
     {

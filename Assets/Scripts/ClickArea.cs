@@ -27,6 +27,6 @@ public class ClickArea : MonoBehaviour
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var gold = GetComponentInParent<GenerateGold>();
         gold.CreateGold();
-        _goldPopup.Create(pos, 200);
+        _goldPopup.Create(pos, gold.goldGainAmountPerClick);
     }
 }
