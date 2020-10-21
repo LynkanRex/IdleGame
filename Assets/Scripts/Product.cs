@@ -62,7 +62,6 @@ public class Product : MonoBehaviour
         productNameText.text = productName + ": " + productOwnedAmount;
         StartCoroutine(nameof(ProductGenerateGold));
         ProductComponent = GetComponentInParent<Gold>();
->>>>>>> parent of c696ade... Update Product.cs
     }
     
     // Update is called once per frame
