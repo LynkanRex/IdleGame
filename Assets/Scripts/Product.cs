@@ -2,39 +2,34 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
 public class Product : MonoBehaviour
 {
 
-    public PurchasableProduct[] purchasableProduct;
-
-    [SerializeField] public string productName = "";
-    [SerializeField] int productCost = 100;
-    [SerializeField] int productProductionTime = 1;
-    [SerializeField] int productProductionAmount = 1;
-
-    [SerializeField] public Text productNameText = null;
-    [SerializeField] private Text productButtonText = null;
-    
-    public int productOwnedAmount = 0;
-
-    private int ProductOwnedAmount
-    {
-        get => productOwnedAmount;
-        set
-        {
-            productOwnedAmount = value;
-            UpdateProductTextLabel();
-        }
-    }
-
+    //public PurchasableProduct[] purchasableProduct;
+    public GameObject buttonCanvas;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        productNameText.text = productName + ": " + productOwnedAmount;
-        StartCoroutine(nameof(ProductGenerateGold));
+        GenerateProductButtons();
+
+        
+        //productNameText.text = productName + ": " + productOwnedAmount;
+        //StartCoroutine(nameof(ProductGenerateGold));
+    }
+
+    void GenerateProductButtons()
+    {
+        // for (var i = 0; i < purchasableProduct.Length; i++)
+        // {
+        //     var myGameObject = Instantiate(purchasableProduct[i].productButton) as GameObject;
+        //
+        //     myGameObject.transform.SetParent(buttonCanvas.transform);
+        //     
+        //     var myView = myGameObject.GetComponent<ConfigurableProductView>();
+        //     myView.productButtonText.text = purchasableProduct[i].productName;
+        // }
     }
     
     // Update is called once per frame
@@ -45,45 +40,46 @@ public class Product : MonoBehaviour
 
     void CanAffordProductCheck()
     {
-        var gold = GetComponentInParent<Gold>();
-        if (gold.GoldAmount < productCost)
-        {
-            productButtonText.color = Color.red;
-        }
-        else
-        {
-            productButtonText.color = Color.black;
-        }
+         var gameCanvas = GameObject.Find("GameCanvas");
+         var gold = gameCanvas.GetComponentInParent<Gold>();
+         if (gold.GoldAmount < purchasableProduct[0].productCost)
+         {
+             purchasableProduct[0].productView.productButtonText.color = Color.red;
+         }
+         else
+         {
+             purchasableProduct[0].productButtonText.color = Color.black;
+         }
     }
 
     void UpdateProductTextLabel()
     {
-        productNameText.text = productName + ": " + productOwnedAmount;
+        //purchasableProduct[0].productNameText.text = purchasableProduct[0].productName + ": " + purchasableProduct[0].ProductOwnedAmount;
     }
 
     public void BuyProduct()
     {
-        var gold = GetComponentInParent<Gold>();
-        if (gold.GoldAmount > productCost)
-        {
-            gold.GoldAmount -= productCost;
-            ProductOwnedAmount += 1;
-        }
-        else
-        {
-            Debug.Log("Not enough gold!");
-        }
+         var gold = GetComponentInParent<Gold>();
+         if (gold.GoldAmount > purchasableProduct[0].productCost)
+         {
+             gold.GoldAmount -= purchasableProduct[0].productCost;
+             purchasableProduct[0].ProductOwnedAmount += 1;
+         }
+         else
+         {
+             Debug.Log("Not enough gold!");
+         }
     }
 
-    IEnumerator ProductGenerateGold()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(productProductionTime);
-            
-            var gold = GetComponentInParent<Gold>();
-            int generatedGold = productOwnedAmount * productProductionAmount;
-            gold.GoldAmount += generatedGold;
-        }
-    }
+    // IEnumerator ProductGenerateGold()
+    // {
+    //     while (true)
+    //     {
+    //         yield return new WaitForSeconds(productProductionTime);
+    //         
+    //         var gold = GetComponentInParent<Gold>();
+    //         int generatedGold = productOwnedAmount * productProductionAmount;
+    //         gold.GoldAmount += generatedGold;
+    //     }
+    // }
 }

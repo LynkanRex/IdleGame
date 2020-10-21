@@ -7,6 +7,8 @@ public class SaveLoad
 {
     private Gold _gold;
     private Product _product;
+    
+    // TODO: Save Array of products owned in stead
 
     public SaveLoad(Gold gold)
     {

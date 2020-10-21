@@ -8,23 +8,20 @@ public class PurchasableProduct
 {
     
     [SerializeField] public string productName = "";
-    [SerializeField] int productCost = 100;
-    [SerializeField] int productProductionTime = 1;
-    [SerializeField] int productProductionAmount = 1;
+    [SerializeField] public int productCost = 100;
+    [SerializeField] public int productProductionTime = 1;
+    [SerializeField] public int productProductionAmount = 1;
 
-    [SerializeField] public Text productNameText = null;
-    [SerializeField] private Text productButtonText = null;
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject productButton;
+    private int _productOwnedAmount = 0;
+    
+    public int ProductOwnedAmount
     {
-        
+        get => _productOwnedAmount;
+        set
+        {
+            _productOwnedAmount = value;
+        }
     }
 }
