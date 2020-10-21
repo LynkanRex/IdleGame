@@ -385,18 +385,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   purchasableProduct:
-  - productName: Press
+    productName: 
     productCost: 100
     productProductionTime: 1
     productProductionAmount: 1
-    productButton: {fileID: 8757334759543812609, guid: 26e2963b529c4e243b4de9716e5a1aa7, type: 3}
-    view: {fileID: 0}
-  - productName: Bank
-    productCost: 200
-    productProductionTime: 1
-    productProductionAmount: 5
-    productButton: {fileID: 8757334759543812609, guid: 26e2963b529c4e243b4de9716e5a1aa7, type: 3}
-    view: {fileID: 0}
+    productButton: {fileID: 0}
   buttonCanvas: {fileID: 2095238290}
 --- !u!1 &2095238290
 GameObject:
