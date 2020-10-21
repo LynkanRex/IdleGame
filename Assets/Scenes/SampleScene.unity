@@ -284,7 +284,6 @@ GameObject:
   - component: {fileID: 1146104745}
   - component: {fileID: 1146104744}
   - component: {fileID: 1146104743}
-  - component: {fileID: 1146104747}
   m_Layer: 5
   m_Name: ProductCanvas
   m_TagString: Untagged
@@ -372,21 +371,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1146104747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146104742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a371bed076ff8440aa223f9114fe9d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  purchasableProducts: []
-  purchasableProductParent: {fileID: 0}
-  purchasableProductPrefab: {fileID: 0}
 --- !u!1 &1153984271 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1859706034316154654, guid: 3de49e0e6c700994ba270e7abdc9ece0, type: 3}
@@ -617,6 +601,10 @@ PrefabInstance:
       propertyPath: goldText
       value: 
       objectReference: {fileID: 1479469591}
+    - target: {fileID: 6328846906388073096, guid: 3de49e0e6c700994ba270e7abdc9ece0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8097111065515612720, guid: 3de49e0e6c700994ba270e7abdc9ece0, type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
@@ -647,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162374429990714388, guid: 3de49e0e6c700994ba270e7abdc9ece0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 193
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3de49e0e6c700994ba270e7abdc9ece0, type: 3}
