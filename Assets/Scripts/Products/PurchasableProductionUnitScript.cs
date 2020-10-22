@@ -72,12 +72,10 @@ public class PurchasableProductionUnitScript : MonoBehaviour
     
     
     void ProduceGold() {
-        //var gold = FindObjectOfType<Gold>();
         _gold.GoldAmount += this.purchasableProduct.productProductionAmount * this.ProductAmount;
     }
 
-    public void BuyGoldPress() {
-        //var gold = FindObjectOfType<Gold>();
+    public void BuyPurchasableProduct() {
         if (_gold.GoldAmount >= this.TotalCost) {
             _gold.GoldAmount -= this.TotalCost;
             this.ProductAmount += 1;

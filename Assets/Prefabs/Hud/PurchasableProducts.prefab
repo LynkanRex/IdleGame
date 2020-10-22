@@ -52,10 +52,12 @@ MonoBehaviour:
   purchasableProducts:
   - productName: Press
     productCost: 150
+    upgradeCost: 150
     productProductionTime: 1
     productProductionAmount: 5
   - productName: Fountain
     productCost: 250
+    upgradeCost: 250
     productProductionTime: 1
     productProductionAmount: 15
   purchasableProductParent: {fileID: 1532391255763657911}
