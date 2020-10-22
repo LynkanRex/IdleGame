@@ -54,7 +54,7 @@ public class PurchasableProductionUnitScript : MonoBehaviour
     
     
     void UpdateGoldPressAmountLabel() {
-        this.goldAmountText.text = this.ProductAmount.ToString($"0 {this.purchasableProduct.productName}");
+        this.goldAmountText.text = this.ProductAmount.ToString($"0 {this.purchasableProduct.productName} +{this.UpgradeAmount}");
     }
     
     void UpdateGoldPressButtonLabel()
@@ -118,5 +118,7 @@ public class PurchasableProductionUnitScript : MonoBehaviour
             _gold.GoldAmount -= this.UpgradeCost;
             this.UpgradeAmount += 1;
         }
+
+        UpdateGoldPressAmountLabel();
     }
 }
