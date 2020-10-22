@@ -139,6 +139,7 @@ MonoBehaviour:
     productProductionAmount: 1
   goldAmountText: {fileID: 5180716212640738329}
   purchaseButtonLabel: {fileID: 5180716212195582697}
+  upgradeButton: {fileID: 3742067633391994210}
 --- !u!114 &4310924990199828131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +572,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5180716211921746248}
         m_TargetAssemblyTypeName: PurchasableProductionUnitScript, Assembly-CSharp
-        m_MethodName: BuyPurchasableProduct
+        m_MethodName: BuyProductUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

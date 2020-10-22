@@ -540,6 +540,30 @@ PrefabInstance:
       propertyPath: purchasableProducts.Array.data[3].productProductionAmount
       value: 1500
       objectReference: {fileID: 0}
+    - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
+      propertyPath: purchasableProducts.Array.data[2].upgradeCost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
+      propertyPath: purchasableProducts.Array.data[3].upgradeCost
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
+      propertyPath: purchasableProducts.Array.data[0].productUpgradeName
+      value: PressUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
+      propertyPath: purchasableProducts.Array.data[1].productUpgradeName
+      value: FountainUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
+      propertyPath: purchasableProducts.Array.data[3].productUpgradeName
+      value: PlanetUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
+      propertyPath: purchasableProducts.Array.data[2].productUpgradeName
+      value: MountainUpgrade
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57d80273c768bb441905af0773cbc369, type: 3}
 --- !u!1001 &1859706033322651665

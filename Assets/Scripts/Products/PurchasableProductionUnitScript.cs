@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class PurchasableProductionUnitScript : MonoBehaviour
     public PurchasableProduct purchasableProduct;
     public Text goldAmountText;
     public Text purchaseButtonLabel;
+    public Button upgradeButton;
     float elapsedTime;
 
     public void SetUp(PurchasableProduct purchasableProduct) {
@@ -27,11 +29,26 @@ public class PurchasableProductionUnitScript : MonoBehaviour
         }   
     }
     
+    private int UpgradeCost
+    {
+        get
+        {
+            return ((this.purchasableProduct.upgradeCost * this.UpgradeAmount) / 10) + this.purchasableProduct.upgradeCost;
+        }   
+    }
+    
     public int ProductAmount {
         get => PlayerPrefs.GetInt(this.purchasableProduct.productName, 0);
         set {
             PlayerPrefs.SetInt(this.purchasableProduct.productName, value);
             UpdateGoldPressAmountLabel();
+        }
+    }
+    
+    public int UpgradeAmount {
+        get => PlayerPrefs.GetInt(this.purchasableProduct.productUpgradeName, 0);
+        set {
+            PlayerPrefs.SetInt(this.purchasableProduct.productUpgradeName, value);
         }
     }
     
@@ -67,12 +84,28 @@ public class PurchasableProductionUnitScript : MonoBehaviour
         {
             purchaseButtonLabel.color = Color.black;
         }
+
+        
+        if (_gold.GoldAmount < UpgradeCost)
+        {
+            upgradeButton.image.color = Color.red;
+        }
+        else
+        {
+            upgradeButton.image.color = Color.white;
+        }
         
     }
     
     
-    void ProduceGold() {
-        _gold.GoldAmount += this.purchasableProduct.productProductionAmount * this.ProductAmount;
+    void ProduceGold()
+    {
+        
+        //basePower + (numPowerUps * basePower * 0.1);
+        double upgradeBonus = 1 + (this.UpgradeAmount * .05);
+        Debug.Log("upgradeBonus is: " + upgradeBonus);
+        Debug.Log("Total money increase is: " + (int)((this.purchasableProduct.productProductionAmount * this.ProductAmount) + upgradeBonus));
+        _gold.GoldAmount += (int)((this.purchasableProduct.productProductionAmount * this.ProductAmount) * upgradeBonus);
     }
 
     public void BuyPurchasableProduct() {
@@ -81,6 +114,13 @@ public class PurchasableProductionUnitScript : MonoBehaviour
             this.ProductAmount += 1;
 
             UpdateGoldPressButtonLabel();
+        }
+    }
+    
+    public void BuyProductUpgrade() {
+        if (_gold.GoldAmount >= this.UpgradeCost) {
+            _gold.GoldAmount -= this.UpgradeCost;
+            this.UpgradeAmount += 1;
         }
     }
 }
