@@ -100,11 +100,7 @@ public class PurchasableProductionUnitScript : MonoBehaviour
     
     void ProduceGold()
     {
-        
-        //basePower + (numPowerUps * basePower * 0.1);
         double upgradeBonus = 1 + (this.UpgradeAmount * .05);
-        Debug.Log("upgradeBonus is: " + upgradeBonus);
-        Debug.Log("Total money increase is: " + (int)((this.purchasableProduct.productProductionAmount * this.ProductAmount) + upgradeBonus));
         _gold.GoldAmount += (int)((this.purchasableProduct.productProductionAmount * this.ProductAmount) * upgradeBonus);
     }
 

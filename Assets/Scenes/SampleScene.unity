@@ -522,7 +522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
       propertyPath: purchasableProducts.Array.data[2].productProductionAmount
-      value: 200
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
       propertyPath: purchasableProducts.Array.data[3].productName
@@ -538,7 +538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
       propertyPath: purchasableProducts.Array.data[3].productProductionAmount
-      value: 1500
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
       propertyPath: purchasableProducts.Array.data[2].upgradeCost
@@ -563,6 +563,10 @@ PrefabInstance:
     - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
       propertyPath: purchasableProducts.Array.data[2].productUpgradeName
       value: MountainUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532391255763657912, guid: 57d80273c768bb441905af0773cbc369, type: 3}
+      propertyPath: purchasableProducts.Array.data[1].productProductionAmount
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57d80273c768bb441905af0773cbc369, type: 3}
