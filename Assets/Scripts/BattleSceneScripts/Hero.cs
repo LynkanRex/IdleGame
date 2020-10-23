@@ -12,7 +12,9 @@ public class Hero : MonoBehaviour
     private Actions actions;
     //private GameObject target;
 
+    public int maxHealth = 100;
     public int lifePoints = 100;
+    public int healthUpgrades = 0;
     public int goldAmount = 0;
 
     // Start is called before the first frame update
@@ -24,17 +26,26 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // currentTime += Time.deltaTime;
-        // if (currentTime >= timer)
-        // {
-        //     actions.Attack(target);
-        //     currentTime = 0f;
-        // }
+        
     }
 
 
     public void TakeDamage(int damage)
     {
         this.lifePoints -= damage;
+    }
+
+
+    public void UpgradeHealth()
+    {
+        if (goldAmount >= 50)
+        {
+            goldAmount -= 50;
+            healthUpgrades++;
+        
+            maxHealth = ((maxHealth * healthUpgrades) / 10) + maxHealth;
+            this.lifePoints = maxHealth;
+            Debug.Log("Upgrade health!");
+        }
     }
 }
