@@ -4,43 +4,28 @@ using UnityEngine;
 
 public class Actions : MonoBehaviour
 {
-
-    private int damage = 5;
-    public int damageUpgrades = 0;
-    private float currentTime;
-    [SerializeField] private float timer = 0.6f;
-
-    [SerializeField] GameObject target;
+    private GameObject hero => GameObject.Find("Hero");
+    private Hero heroGold => GetComponent<Hero>();
+    private Unit statReference => GetComponent<Unit>();
     
-    // Start is called before the first frame update
-    void Start()
+    public void UpgradeHealth()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        currentTime += Time.deltaTime;
-        if (currentTime >= timer)
+        if (heroGold.goldAmount >= 50)
         {
-            Attack(target);
-            currentTime -= timer;
+            heroGold.goldAmount -= 50;
+
+            hero.GetComponent<Unit>().healthUpgrades++;
+            statReference.maxHealth = ((statReference.maxHealth * statReference.healthUpgrades) / 10) + statReference.maxHealth;
+            statReference.health = statReference.maxHealth;
         }
     }
     
-    public void Attack(GameObject target)
+    public void UpgradeDamage()
     {
-        var totalDamage = CalculateDamage();
-        
-        target.SendMessage("TakeDamage", totalDamage);
-        Debug.Log("Attacking: " + target + "!");
-    }
-
-    private int CalculateDamage()
-    {
-
-        var totalDamage = ((damage * damageUpgrades) / 10) + damage;
-        return totalDamage;
+        if (heroGold.goldAmount >= 50)
+        {
+            heroGold.goldAmount -= 50;
+            hero.GetComponent<Unit>().damageUpgrades++;
+        }
     }
 }

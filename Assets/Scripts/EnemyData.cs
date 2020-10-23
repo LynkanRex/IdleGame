@@ -9,4 +9,6 @@ public class EnemyData : ScriptableObject
     public float attackTime = 0.6f;
     public float damage = 5f;
     public float health = 100f;
+    public int healthUpgrades = 0;
+    public int damageUpgrades = 0;
 }

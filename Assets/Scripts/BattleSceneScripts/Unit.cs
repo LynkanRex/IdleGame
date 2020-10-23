@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -8,7 +9,11 @@ public class Unit : MonoBehaviour
     public float attackTime = 0.6f;
     public float damage = 5f;
     public float health = 100f;
+    public float maxHealth = 100f;
     float elapsedTime;
+
+    public int healthUpgrades;
+    public int damageUpgrades;
 
 
     private GameObject Target => GetComponent<Target>().value;
@@ -22,7 +27,6 @@ public class Unit : MonoBehaviour
     private bool IsDead => this.health <= 0f;
     private bool IsEnemy => GetComponent<Enemy>() != null;
     
-    // Update is called once per frame
     void Update()
     {
         UpdateTime();
@@ -41,9 +45,16 @@ public class Unit : MonoBehaviour
     private void Attack()
     {
         var unit = this.Target.GetComponent<Unit>();
-        unit.TakeDamage(this.damage);
-        Debug.Log($"{this} attacks {this.Target} for {this.damage} damage!", this);
+        var totalDamage = CalculateDamage();
+        unit.TakeDamage(totalDamage);
+        Debug.Log($"{this} attacks {this.Target} for {totalDamage} damage!", this);
         this.elapsedTime -= attackTime;
+    }
+
+    float CalculateDamage()
+    {
+        var totalDamage = ((this.damage * damageUpgrades) / 10) + damage;
+        return totalDamage;
     }
 
     public void TakeDamage(float damage)

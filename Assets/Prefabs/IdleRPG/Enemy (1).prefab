@@ -61,6 +61,9 @@ MonoBehaviour:
   attackTime: 1.2
   damage: 3
   health: 40
+  maxHealth: 100
+  healthUpgrades: 0
+  damageUpgrades: 0
 --- !u!114 &-8066080974048239303
 MonoBehaviour:
   m_ObjectHideFlags: 0

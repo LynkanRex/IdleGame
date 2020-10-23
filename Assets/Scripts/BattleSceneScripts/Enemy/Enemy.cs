@@ -22,12 +22,4 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
-    //
-    // private void SpawnEnemy(int value)
-    // {
-    //     this.lifePoints = value;
-    //     this.isSpawned = true;
-    //     actions.enabled = true;
-    // }
 }
