@@ -25,7 +25,7 @@ public class Actions : MonoBehaviour
         if (currentTime >= timer)
         {
             Attack(target);
-            currentTime = 0f;
+            currentTime -= timer;
         }
     }
     

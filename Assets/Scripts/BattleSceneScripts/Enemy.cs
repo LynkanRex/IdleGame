@@ -6,55 +6,28 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    private bool isSpawned = false;
-    public Actions actions;
-
-    public int maxLifePoints = 40;
-    public int lifePoints = 40;
-    public int goldValue = 7;
-
-    void Awake()
-    {
-        SpawnEnemy(this.maxLifePoints);
-    }
+    bool HasTarget => GetComponent<Target>() != null;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool isSpawned = false;
+    public int goldValue = 7;
 
     // Update is called once per frame
     void Update()
     {
-        if (isSpawned)
-        {
-            return;
-        }
-        else
-        {
-            SpawnEnemy(this.maxLifePoints);
+        if (!this.HasTarget) {
+            var hero = FindObjectOfType<Hero>();
+            if (hero != null) {
+                var target = this.gameObject.AddComponent<Target>();
+                target.value = hero.gameObject;
+            }
         }
     }
 
-
-    private void SpawnEnemy(int maxLifePoints)
-    {
-        this.lifePoints = maxLifePoints;
-        this.isSpawned = true;
-        actions.enabled = true;
-    }
-    
-    public void TakeDamage(int damage)
-    {
-        this.lifePoints -= damage;
-        if (this.lifePoints <= 0)
-        {
-            var hero = GameObject.Find("Hero");
-            var heroStats = hero.GetComponent<Hero>();
-            heroStats.goldAmount += goldValue;
-            this.isSpawned = false;
-            actions.enabled = false;
-        }
-    }
+    //
+    // private void SpawnEnemy(int value)
+    // {
+    //     this.lifePoints = value;
+    //     this.isSpawned = true;
+    //     actions.enabled = true;
+    // }
 }

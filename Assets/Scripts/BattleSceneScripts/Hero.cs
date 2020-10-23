@@ -5,34 +5,25 @@ using UnityEngine.Timeline;
 
 public class Hero : MonoBehaviour
 {
-
-    //private float currentTime;
-    //private float timer = 0.6f;
-
-    //private Actions actions;
-    //private GameObject target;
-
-    public int maxHealth = 100;
-    public int lifePoints = 100;
-    public int healthUpgrades = 0;
+    private bool HasTarget => GetComponent<Target>() != null;
+    
+    // public int maxHealth = 100;
+    // public int lifePoints = 100;
+    // public int healthUpgrades = 0;
     public int goldAmount = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //target = GameObject.Find("Enemy");
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-
-    public void TakeDamage(int damage)
-    {
-        this.lifePoints -= damage;
+        if (!this.HasTarget)
+        {
+            var enemy = FindObjectOfType<Enemy>();
+            if (enemy != null)
+            {
+                var target = this.gameObject.AddComponent<Target>();
+                target.value = enemy.gameObject;
+            }
+        }
     }
 
 
@@ -41,10 +32,10 @@ public class Hero : MonoBehaviour
         if (goldAmount >= 50)
         {
             goldAmount -= 50;
-            healthUpgrades++;
-        
-            maxHealth = ((maxHealth * healthUpgrades) / 10) + maxHealth;
-            this.lifePoints = maxHealth;
+            // healthUpgrades++;
+            //
+            // maxHealth = ((maxHealth * healthUpgrades) / 10) + maxHealth;
+            // this.lifePoints = maxHealth;
         }
     }
     
@@ -53,8 +44,8 @@ public class Hero : MonoBehaviour
         if (goldAmount >= 50)
         {
             goldAmount -= 50;
-            var actions = GetComponent<Actions>();
-            actions.damageUpgrades++;
+            // var actions = GetComponent<Actions>();
+            // actions.damageUpgrades++;
         }
     }
 }
