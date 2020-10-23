@@ -1,13 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    
-    private Actions actions;
-    
+
+    private bool isSpawned = false;
+    public Actions actions;
+
+    public int maxLifePoints = 100;
     public int lifePoints = 100;
+    public int goldValue = 7;
+
+    void Awake()
+    {
+        SpawnEnemy(this.maxLifePoints);
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -20,10 +29,25 @@ public class Enemy : MonoBehaviour
     {
         
     }
-    
+
+
+    private void SpawnEnemy(int maxLifePoints)
+    {
+        this.lifePoints = maxLifePoints;
+        this.isSpawned = true;
+        actions.enabled = true;
+    }
     
     public void TakeDamage(int damage)
     {
         this.lifePoints -= damage;
+        if (this.lifePoints <= 0)
+        {
+            var hero = GameObject.Find("Hero");
+            var heroStats = hero.GetComponent<Hero>();
+            heroStats.goldAmount += goldValue;
+            this.isSpawned = false;
+            actions.enabled = false;
+        }
     }
 }

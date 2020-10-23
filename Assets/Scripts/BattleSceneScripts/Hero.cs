@@ -13,6 +13,7 @@ public class Hero : MonoBehaviour
     //private GameObject target;
 
     public int lifePoints = 100;
+    public int goldAmount = 0;
 
     // Start is called before the first frame update
     void Start()
