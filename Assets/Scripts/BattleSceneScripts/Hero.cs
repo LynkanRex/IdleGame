@@ -9,7 +9,7 @@ public class Hero : MonoBehaviour
     //private float currentTime;
     //private float timer = 0.6f;
 
-    private Actions actions;
+    //private Actions actions;
     //private GameObject target;
 
     public int maxHealth = 100;
@@ -45,7 +45,16 @@ public class Hero : MonoBehaviour
         
             maxHealth = ((maxHealth * healthUpgrades) / 10) + maxHealth;
             this.lifePoints = maxHealth;
-            Debug.Log("Upgrade health!");
+        }
+    }
+    
+    public void UpgradeDamage()
+    {
+        if (goldAmount >= 50)
+        {
+            goldAmount -= 50;
+            var actions = GetComponent<Actions>();
+            actions.damageUpgrades++;
         }
     }
 }

@@ -6,6 +6,7 @@ public class Actions : MonoBehaviour
 {
 
     private int damage = 5;
+    public int damageUpgrades = 0;
     private float currentTime;
     [SerializeField] private float timer = 0.6f;
 
@@ -30,7 +31,16 @@ public class Actions : MonoBehaviour
     
     public void Attack(GameObject target)
     {
-        target.SendMessage("TakeDamage", damage);
+        var totalDamage = CalculateDamage();
+        
+        target.SendMessage("TakeDamage", totalDamage);
         Debug.Log("Attacking: " + target + "!");
+    }
+
+    private int CalculateDamage()
+    {
+
+        var totalDamage = ((damage * damageUpgrades) / 10) + damage;
+        return totalDamage;
     }
 }

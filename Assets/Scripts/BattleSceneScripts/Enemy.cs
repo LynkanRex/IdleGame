@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     private bool isSpawned = false;
     public Actions actions;
 
-    public int maxLifePoints = 100;
-    public int lifePoints = 100;
+    public int maxLifePoints = 40;
+    public int lifePoints = 40;
     public int goldValue = 7;
 
     void Awake()
