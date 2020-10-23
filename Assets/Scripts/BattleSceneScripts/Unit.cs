@@ -20,6 +20,7 @@ public class Unit : MonoBehaviour
     private bool IsChargingAttack => this.elapsedTime < this.attackTime;
 
     private bool IsDead => this.health <= 0f;
+    private bool IsEnemy => GetComponent<Enemy>() != null;
     
     // Update is called once per frame
     void Update()
@@ -50,6 +51,13 @@ public class Unit : MonoBehaviour
         this.health -= damage;
         if (this.IsDead)
         {
+            if (IsEnemy)
+            {
+                var hero = this.Target.GetComponent<Hero>();
+                var enemyGoldValue = GetComponent<Enemy>().goldValue;
+                hero.goldAmount += enemyGoldValue;
+                Debug.Log($"{this} dies, leaving {enemyGoldValue} Gold on the ground for {this.Target}!", this);
+            }
             Destroy(this.gameObject);
         }
     }
