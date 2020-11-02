@@ -26,7 +26,22 @@ public class Unit : MonoBehaviour
 
     private bool IsDead => this.health <= 0f;
     private bool IsEnemy => GetComponent<Enemy>() != null;
+
+
+    private EnemySpawner _enemySpawner;
+    private EnemyData _enemyData;
     
+    private void Start()
+    {
+        if (this.IsEnemy)
+        {
+            _enemySpawner = GetComponent<EnemySpawner>();
+            _enemyData = _enemySpawner.EnemyData;
+            this.maxHealth = _enemyData.maxHealth;
+            this.health = _enemyData.health;    
+        }
+    }
+
     void Update()
     {
         UpdateTime();
@@ -60,6 +75,12 @@ public class Unit : MonoBehaviour
     public void TakeDamage(float damage)
     {
         this.health -= damage;
+        if (IsEnemy)
+        {
+            UpdateHealthText();
+        }
+        
+        
         if (this.IsDead)
         {
             if (IsEnemy)
@@ -71,5 +92,10 @@ public class Unit : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
+    }
+
+    void UpdateHealthText()
+    {
+        _enemySpawner.UpdateHealthText(this.health);
     }
 }

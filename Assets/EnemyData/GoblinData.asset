@@ -16,5 +16,6 @@ MonoBehaviour:
   attackTime: 0.6
   damage: 4
   health: 25
+  maxHealth: 25
   healthUpgrades: 0
   damageUpgrades: 0

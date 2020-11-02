@@ -767,7 +767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTime: 0.6
   damage: 5
-  health: 10000
+  health: 100
   maxHealth: 100
   healthUpgrades: 0
   damageUpgrades: 0
