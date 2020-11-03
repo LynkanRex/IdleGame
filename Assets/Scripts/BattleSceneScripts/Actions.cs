@@ -14,9 +14,11 @@ public class Actions : MonoBehaviour
         {
             heroGold.goldAmount -= 50;
 
-            hero.GetComponent<Unit>().healthUpgrades++;
-            statReference.maxHealth = ((statReference.maxHealth * statReference.healthUpgrades) / 10) + statReference.maxHealth;
-            statReference.health = statReference.maxHealth;
+            var heroReference = hero.GetComponent<Unit>(); 
+            
+            heroReference.HealthUpgrades++;
+            heroReference.MAXHealth = ((heroReference.MAXHealth * heroReference.HealthUpgrades) / 10 ) + heroReference.MAXHealth;
+            heroReference.health = heroReference.MAXHealth;
         }
     }
     
@@ -25,7 +27,7 @@ public class Actions : MonoBehaviour
         if (heroGold.goldAmount >= 50)
         {
             heroGold.goldAmount -= 50;
-            hero.GetComponent<Unit>().damageUpgrades++;
+            hero.GetComponent<Unit>().DamageUpgrades++;
         }
     }
 }

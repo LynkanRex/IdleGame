@@ -8,13 +8,48 @@ public class Unit : MonoBehaviour
 {
     public float attackTime = 0.6f;
     public float damage = 5f;
-    public float health = 100f;
-    public float maxHealth = 100f;
+    public float health = 0f;
+    public float maxHealth = 0f;
     float elapsedTime;
 
-    public int healthUpgrades;
+        
     public int damageUpgrades;
+    public int healthUpgrades;
 
+
+    public float MAXHealth
+    {
+        get => PlayerPrefs.GetFloat("MaxHealth", health);
+        set
+        {
+            maxHealth =+ value;
+            PlayerPrefs.SetFloat("MaxHealth", maxHealth);
+        } 
+    }
+
+    public int HealthUpgrades
+    {
+        get => PlayerPrefs.GetInt("HealthUpgrades", 0);
+        set
+        {
+            healthUpgrades =+ value;
+            PlayerPrefs.SetInt("HealthUpgrades", value);
+        }
+    }
+    
+    public int DamageUpgrades
+    {
+        get => PlayerPrefs.GetInt("DamageUpgrades", 0);
+        set
+        {
+            damageUpgrades =+ value;
+            PlayerPrefs.SetInt("DamageUpgrades", value);
+        }
+    }
+
+
+   
+    
 
     private GameObject Target => GetComponent<Target>().value;
 
@@ -30,7 +65,13 @@ public class Unit : MonoBehaviour
 
     private EnemySpawner _enemySpawner;
     private EnemyData _enemyData;
-    
+
+
+    private void Awake()
+    {
+        InitializeUpgrades();
+    }
+
     private void Start()
     {
         if (this.IsEnemy)
@@ -97,5 +138,20 @@ public class Unit : MonoBehaviour
     void UpdateHealthText()
     {
         _enemySpawner.UpdateHealthText(this.health);
+    }
+
+
+    void InitializeUpgrades()
+    {
+        this.DamageUpgrades = this.DamageUpgrades;
+        this.HealthUpgrades = this.HealthUpgrades;
+
+        UpdateHealth();
+    }
+    
+    public void UpdateHealth()
+    {
+        this.MAXHealth = this.MAXHealth;
+        this.health = this.MAXHealth;
     }
 }
