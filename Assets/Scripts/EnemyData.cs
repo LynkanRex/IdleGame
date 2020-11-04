@@ -12,4 +12,5 @@ public class EnemyData : ScriptableObject
     public float maxHealth = 100f;
     public int healthUpgrades = 0;
     public int damageUpgrades = 0;
+    public Sprite artwork;
 }

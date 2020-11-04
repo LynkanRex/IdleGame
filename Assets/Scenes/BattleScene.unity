@@ -731,7 +731,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDatas:
   - {fileID: 11400000, guid: f7ab10a99eb020d429cbae8064d6c445, type: 2}
-  - {fileID: 11400000, guid: f7ab10a99eb020d429cbae8064d6c445, type: 2}
   spawnPointParent: {fileID: 579898272}
   enemyUnitPrefab: {fileID: 5593111462617407821, guid: 00a2474f56a08944bbff022003a2bff6, type: 3}
 --- !u!1 &1616640350
@@ -769,8 +768,8 @@ MonoBehaviour:
   damage: 5
   health: 100
   maxHealth: 100
-  healthUpgrades: 0
   damageUpgrades: 0
+  healthUpgrades: 0
 --- !u!114 &1616640352
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,7 +47,14 @@ public class Unit : MonoBehaviour
         }
     }
 
-
+    public int CurrentEnemy
+    {
+        get => PlayerPrefs.GetInt(_enemyData.name);
+        set
+        {
+            PlayerPrefs.SetInt(_enemyData.name, value);
+        }
+    }
    
     
 
@@ -119,6 +126,7 @@ public class Unit : MonoBehaviour
         if (IsEnemy)
         {
             UpdateHealthText();
+            _enemySpawner.CurrentEnemyHealth = this.health;
         }
         
         

@@ -12,12 +12,27 @@ public class EnemySpawner : MonoBehaviour
 
     public Text enemyNameLabel;
     public Text enemyHealthLabel;
+    public Sprite artwork;
+
+    public Image imageRef;
     
     public void SetUp(EnemyData enemyData) {
         this.EnemyData = enemyData;
         this.gameObject.name = enemyData.name;
         this.enemyNameLabel.text = enemyData.name;
-        this.enemyHealthLabel.text = enemyData.health.ToString($"0 Hp" + " / " + $"{enemyData.maxHealth} Hp");
+        this.enemyHealthLabel.text = CurrentEnemyHealth.ToString($"0 Hp" + " / " + $"{enemyData.maxHealth} Hp");
+        this.artwork = enemyData.artwork;
+        //this.enemyHealthLabel.text = enemyData.health.ToString($"0 Hp" + " / " + $"{enemyData.maxHealth} Hp");
+    }
+    
+    public float CurrentEnemyHealth
+    {
+        get => PlayerPrefs.GetFloat("CurrentEnemyHealth", EnemyData.maxHealth);
+        set
+        {
+            PlayerPrefs.SetFloat("CurrentEnemyHealth", value);
+            UpdateHealthText(value);
+        }
     }
 	
     public int EnemiesKilledAmount {
@@ -30,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        UpdateEnemyNameLabel();
+        InstantiateStats();
     }
 
     
@@ -38,8 +53,27 @@ public class EnemySpawner : MonoBehaviour
       
     }
 
+    void InstantiateStats()
+    {
+        UpdateEnemyNameLabel();
+        UpdateEnemySprite();
+        UpdateEnemyHealth();
+    }
+    
     void UpdateEnemyNameLabel() {
         this.enemyNameLabel.text = this.EnemyData.name;
+    }
+    
+    void UpdateEnemySprite()
+    {
+        //imageRef = GetComponentInChildren<Image>();
+        imageRef.sprite = this.EnemyData.artwork;
+    }
+    
+    void UpdateEnemyHealth()
+    {
+        this.CurrentEnemyHealth = this.CurrentEnemyHealth;
+        this.enemyHealthLabel.text = CurrentEnemyHealth.ToString($"0 Hp" + " / " + $"{EnemyData.maxHealth} Hp");
     }
 
 
