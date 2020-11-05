@@ -229,6 +229,8 @@ MonoBehaviour:
   health: 40
   maxHealth: 100
   damageTextPrefab: {fileID: 8143899974344429562, guid: 5c9d7b0b4bd03464fa0644c01bc0bf07, type: 3}
+  goldTextPrefab: {fileID: 8143899974344429562, guid: b5ebabc888bbe4b49a991a37ae961d17, type: 3}
+  goldPopupTarget: {fileID: 0}
   damageUpgrades: 0
   healthUpgrades: 0
 --- !u!114 &-8066080974048239303

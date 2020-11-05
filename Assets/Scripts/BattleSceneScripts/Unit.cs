@@ -13,7 +13,10 @@ public class Unit : MonoBehaviour
     public float maxHealth = 100f;
     float elapsedTime;
     public Text damageTextPrefab;
+    public Text goldTextPrefab;
+    public Text goldPopupTarget;
 
+    
         
     public int damageUpgrades;
     public int healthUpgrades;
@@ -72,6 +75,7 @@ public class Unit : MonoBehaviour
     private bool IsEnemy => GetComponent<Enemy>() != null;
 
 
+    private GoldSpawner goldSpawner;
     private EnemySpawner _enemySpawner;
     private EnemyData _enemyData;
 
@@ -85,6 +89,8 @@ public class Unit : MonoBehaviour
     {
         if (this.IsEnemy)
         {
+
+            goldSpawner = FindObjectOfType<GoldSpawner>();
             _enemySpawner = GetComponent<EnemySpawner>();
             _enemyData = _enemySpawner.EnemyData;
             this.maxHealth = _enemyData.maxHealth;
@@ -127,8 +133,8 @@ public class Unit : MonoBehaviour
         this.health -= damage;
         UpdateHealthText();
         
-        var instance = Instantiate(this.damageTextPrefab, this.transform);
-        instance.GetComponent<Text>().text = $"-{damage} Hp";
+        var damageTextInstance = Instantiate(this.damageTextPrefab, this.transform);
+        damageTextInstance.GetComponent<Text>().text = $"-{damage} Hp";
         
         if (IsEnemy)
         {
@@ -143,6 +149,10 @@ public class Unit : MonoBehaviour
                 var hero = this.Target.GetComponent<Hero>();
                 var enemyGoldValue = GetComponent<Enemy>().goldValue;
                 hero.goldAmount += enemyGoldValue;
+                
+                var goldTextInstance = Instantiate(this.goldTextPrefab, this.goldSpawner.transform);
+                goldTextInstance.GetComponent<Text>().text = $"+{enemyGoldValue} Gold";
+                
                 Debug.Log($"{this} dies, leaving {enemyGoldValue} Gold on the ground for {this.Target}!", this);
             }
             Destroy(this.gameObject);
