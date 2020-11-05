@@ -8,8 +8,8 @@ public class Unit : MonoBehaviour
 {
     public float attackTime = 0.6f;
     public float damage = 5f;
-    public float health = 0f;
-    public float maxHealth = 0f;
+    public float health = 100f;
+    public float maxHealth = 100f;
     float elapsedTime;
 
         
@@ -123,9 +123,9 @@ public class Unit : MonoBehaviour
     public void TakeDamage(float damage)
     {
         this.health -= damage;
+        UpdateHealthText();
         if (IsEnemy)
         {
-            UpdateHealthText();
             _enemySpawner.CurrentEnemyHealth = this.health;
         }
         
@@ -145,7 +145,15 @@ public class Unit : MonoBehaviour
 
     void UpdateHealthText()
     {
-        _enemySpawner.UpdateHealthText(this.health);
+        if (IsEnemy)
+        {
+            _enemySpawner.UpdateHealthText(this.health);
+        }
+        else
+        {
+            var hero = this.GetComponent<Hero>();
+            hero.UpdateHealthText(this.health);
+        }
     }
 
 
